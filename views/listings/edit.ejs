@@ -1,0 +1,56 @@
+<% layout("layouts/boilerplate") %>
+<div class="row">
+    <div class="col-8 offset-2">
+        <br>
+    <h3>Edit Your Listing</h3>
+    <form method="POST" action="/listings/<%=listing._id%>?_method=PUT" novalidate class="needs-validation" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input value="<%=listing.title%>" name="listing[title]" placeholder="Add a Catchy Title" type="text" class="form-control" required>
+            <div class="valid-feedback">Title looks good!</div>
+            <div class="invalid-feedback">Pls enter the title</div>           
+        </div>
+        
+        <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea name="listing[description]" class="form-control" required><%=listing.description%></textarea>
+            <div class="valid-feedback">Description looks good!</div>
+            <div class="invalid-feedback">Pls enter the description</div> 
+        </div>
+
+        <div class="mb-3">
+            <label for="image" class="form-label">Current Image</label>
+            <% if(listing.image && listing.image.url) { %>
+                <div class="mb-2">
+                    <img src="<%=listing.image.url%>" class="img-fluid" style="max-height: 200px;" alt="Current Image">
+                </div>
+            <% } %>
+            <label for="image" class="form-label">Upload New Image (optional)</label>
+            <input name="listing[image]" type="file" class="form-control" accept="image/*">
+            <div class="form-text">Choose a new image file to replace the current one (JPG, PNG, JPEG)</div>
+        </div>
+
+        <div class="row">
+            <div class="mb-3 col-md-4">
+            <label for="price" class="form-label">Price</label>
+            <input value="<%=listing.price%>" name="listing[price]" placeholder="1200" type="number" class="form-control" required>
+            <div class="invalid-feedback">Pls enter the price</div> 
+        </div>
+        <div class="mb-3 col-md-8">
+            <label for="country" class="form-label">Country</label>
+            <input value="<%=listing.country%>" name="listing[country]" placeholder="India" type="text" class="form-control" required>
+            <div class="invalid-feedback">Pls enter the Country</div>
+        </div>
+        </div>
+        
+        <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <input value="<%=listing.location%>" name="listing[location]" placeholder="Jaipur, Rajasthan" type="text" class="form-control" required>
+            <div class="invalid-feedback">Pls enter the Location</div>
+        </div>
+        <br>
+        <button class="btn btn-dark add-btn">Update</button>
+        <br><br>
+    </form>  
+    </div>
+</div>
