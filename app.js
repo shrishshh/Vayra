@@ -102,7 +102,8 @@ app.use((err,req,res,next) => {
 });
 
 // Updated to use environment variable for port
-const port = process.env.PORT || 8080;
+// Change this line at the bottom of your app.js:
+const port = process.env.PORT || 8080;  
 app.listen(port, () => {
     console.log(`server is listening to port ${port}`);
 });
